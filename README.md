@@ -1,1 +1,2 @@
-# coding-guide
+# :computer:Code Standards and Code Review Guidelines
+
