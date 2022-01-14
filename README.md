@@ -1,5 +1,7 @@
 # :computer:Code Standards and Code Review Guidelines
 
+
+# Code Review
 ## Everyone
 
 - Accept that many programming decisions are opinions. Discuss tradeoffs, which
