@@ -1,66 +1,215 @@
-# :computer:Code Standards and Code Review Guidelines
+# 💻 Code Standards and Guidelines (includes Git)
+
+This document outlines the processes and rules that the team must follow when using Coding/Git, covering **branches**, **pull requests**, **commits**, and **code review**. The goal is to ensure consistency, quality, and efficiency in software development.
+
+## Table of Contents
+
+1. [Branches](#branches)
+   - [Branch Structure](#branch-structure)
+   - [Branch Naming](#branch-naming)
+   - [Workflow](#workflow)
+2. [Commits](#commits)
+   - [Commit Messages](#commit-messages)
+   - [Best Practices](#best-practices)
+3. [Pull Requests](#pull-requests)
+   - [Creating Pull Requests](#creating-pull-requests)
+   - [Reviewing Pull Requests](#reviewing-pull-requests)
+   - [Merging](#merging)
+4. [Code Review](#code-review)
+   - [Guidelines for Everyone](#guidelines-for-everyone)
+   - [Having Your Code Reviewed](#having-your-code-reviewed)
+   - [Reviewing Code](#reviewing-code)
+   - [Style Comments](#style-comments)
+5. [Tools and Integrations](#tools-and-integrations)
+
+---
+
+## Branches
+
+### Branch Structure
+
+We adopt a branch structure that facilitates parallel development and continuous integration. The main branches are:
+
+- **main**: The primary branch that reflects the stable state of the code in production.
+- **development**: The development branch where integrations occur before being merged into `main`.
+- **[Ticket ID]**: Branches for developing specific features or fixes, named after the corresponding ticket ID.
+
+### Branch Naming
+
+We use a ticket-based convention to name branches, facilitating traceability and identifying the purpose of each branch.
+
+- **Development Branches**: `[TICKET_ID]`
+  
+  **Examples:**
+  - `DRPT-18`
+  - `ABC-1`
+  - `EDCBA-123`
+  - `AIF-4`
+
+### Workflow
+
+We adopt a simplified workflow focused on using the ticket system. The workflow follows these steps:
+
+1. **Branch Creation**:
+   - Create a branch from `development` with the name corresponding to the ticket ID.
+   - **Example**:
+     ```bash
+     git checkout development
+     git checkout -b DRPT-18
+     ```
+
+2. **Development**:
+   - Perform development on the created branch.
+   - Make commits following the message convention that includes the ticket ID.
+
+3. **Pull Request**:
+   - Upon completing development, create a Pull Request (PR) pointing to the `development` branch.
+   - Follow the code review guidelines before merging.
+
+4. **Merging**:
+   - After PR approval and continuous integration verification, merge into `development`.
+
+---
+
+## Commits
+
+### Commit Messages
+
+Commit messages should be clear and informative, facilitating the understanding of the changes made. Including the ticket ID at the beginning of the summary is mandatory.
+
+- **Format**:
+  ```
+  [TICKET_ID]: Brief summary (up to 50 characters)
+
+  Well Detailed description (required, up to 90 characters per line) for each implemented feature, doc, test, etc
+  ```
 
 
-# Code Review
-## Everyone
+**Example**:
+```
+DRPT-18: Add Google login functionality
 
-- Accept that many programming decisions are opinions. Discuss tradeoffs, which
-  you prefer, and reach a resolution quickly.
-- Ask good questions; don't make demands. ("What do you think about naming this
-  `:user_id`?")
-- Good questions avoid judgment and avoid assumptions about the author's
-  perspective.
-- Ask for clarification. ("I didn't understand. Can you clarify?")
-- Avoid selective ownership of code. ("mine", "not mine", "yours")
-- Avoid using terms that could be seen as referring to personal traits. ("dumb",
-  "stupid"). Assume everyone is intelligent and well-meaning.
-- Be explicit. Remember people don't always understand your intentions online.
-- Be humble. ("I'm not sure - let's look it up.")
-- Don't use hyperbole. ("always", "never", "endlessly", "nothing")
-- Don't use sarcasm.
-- Keep it real. If emoji, animated gifs, or humor aren't you, don't force them.
-  If they are, use them with aplomb.
-- Talk synchronously (e.g. chat, screen-sharing, in person) if there are too
-  many "I didn't understand" or "Alternative solution:" comments. Post a
-  follow-up comment summarizing the discussion.
+Implement OAuth2 authentication using Google's API.
+Add unit tests for the new functionality.
+```
 
-## Having Your Code Reviewed
+### Best Practices
+- **Use Imperative Tense**: Use the imperative tense to describe the action being performed in the commit message. (eg: "Add", "Update", "Fix", "Remove", etc)
+- **Small and Frequent Commits**: Make small and frequent commits to facilitate tracking changes and identifying issues.
+- **Atomization**: Each commit should represent a single logical change.
+- **Avoid Large Commits**: Split large changes into smaller commits.
+- **Do Not Commit Temporary Files**: Exclude temporary or sensitive files using `.gitignore`.
+- **Review Before Committing**: Check changes and messages before making the commit.
 
-- Be grateful for the reviewer's suggestions. ("Good call. I'll make that
-  change.")
-- Be aware that it can be [challenging to convey emotion and intention online]
-- Explain why the code exists. ("It's like that because of these reasons. Would
-  it be more clear if I rename this class/file/method/variable?")
-- Extract some changes and refactoring into future tickets/stories.
-- Link to the code review from the ticket/story. ("Ready for review:
-  https://github.com/organization/project/pull/1")
-- Push commits based on earlier rounds of feedback as isolated commits to the
-  branch. Do not squash until the branch is ready to merge. Reviewers should be
-  able to read individual updates based on their earlier feedback.
-- Seek to understand the reviewer's perspective.
-- Try to respond to every comment.
-- Wait to merge the branch until continuous integration (TDDium, Travis CI,
-  CircleCI, etc.) tells you the test suite is green in the branch.
-- Merge once you feel confident in the code and its impact on the project.
-- Final editorial control rests with the pull request author.
+---
+
+## Pull Requests
+
+### Creating Pull Requests
+
+Upon completing development on a branch, create a Pull Request (PR) to integrate the changes into the `development` branch.
+
+**Steps**:
+1. Access the repository on GitHub.
+2. Click on "New Pull Request".
+3. Select the source branch (e.g., `DRPT-18`) and the target branch (`development`).
+4. Fill in the PR title and description, including:
+   - **Title**: `[TICKET_ID]: Clear summary of the change.`
+   - **Description**: Details about what was done, why it was done, and any relevant additional information.
+   - **Tasks**: List the tasks completed in this PR.
+   - **Screenshots**: Include screenshots of any relevant changes, mainly for visual confirmation and UI changes.
+   - **References**: Links to related issues or tickets.
+
+**Example Description**:
+```
+### Description
+Adds Google authentication functionality, allowing users to log in using their Google accounts.
+
+### Tasks
+- Implement OAuth2 with Google's API.
+- Add unit tests.
+- Update documentation.
+
+### Screenshots
+
+![Screenshot 1](https://example.com/screenshot1.png)
+![Screenshot 2](https://example.com/screenshot2.png)
+
+### Closes Task/Issue
+Closes [DRPT-18](task_link)
+```
+
+
+### Reviewing Pull Requests
+
+All PRs must be reviewed by at least two team member before merging. The review should focus on:
+
+- **Code Quality**: Ensuring adherence to coding standards.
+- **Functionality**: Ensuring the functionality meets the requirements.
+- **Tests**: Confirming the existence and coverage of tests.
+- **Documentation**: Ensuring documentation is up to date.
+
+**Review Checklist**:
+- [ ] Code follows project conventions.
+- [ ] No obvious bugs.
+- [ ] Tests have been added or updated.
+- [ ] Documentation has been updated as necessary.
+- [ ] The PR resolves the referenced issue/ticket.
+
+### Merging
+
+After PR approval, merging should follow these guidelines:
+
+- **Squash and Merge**: Use "Squash and Merge" to consolidate all PR commits into a single commit on the `development` branch. This commit must follow the message convention with the ticket ID.
+- **Rebase**: Alternatively, use rebase to maintain a linear history, ensuring the main commit message includes the ticket ID.
+- **Branch Protection**: Configure protections on the `development` branch to require reviews before merging and ensure the test suite passes.
+
+---
+
+## Code Review
+
+### Guidelines for Everyone
+
+- **Respect and Collaboration**:
+  - Accept that many programming decisions are opinions. Discuss trade-offs, prefer what is best, and reach a resolution quickly.
+  - Ask good questions; do not make demands. ("What do you think about naming this `:user_id`?")
+  - Avoid terms that could be seen as referring to personal traits. ("dumb", "stupid"). Assume everyone is intelligent and well-meaning.
+  - Be explicit. Remember that people do not always understand your intentions online.
+  - Be humble. ("I'm not sure - let's look it up.")
+  - Do not use hyperbole. ("always", "never", "endlessly", "nothing")
+  - Do not use sarcasm.
+  - Keep communication real. If emojis, animated gifs, or humor are not your style, do not force them. If they are, use them sparingly.
+  - Communicate synchronously (e.g., chat, screen-sharing, in person) if there are too many "I didn't understand" or "Alternative solution:" comments. Post a follow-up comment summarizing the discussion.
+
+### Having Your Code Reviewed
+
+- **Be Grateful for the Reviewer's Suggestions**: ("Good call. I'll make that change.")
+- **Be Aware that it can be [challenging to convey emotion and intention online].**
+- **Explain Why the Code Exists**: ("It's like that because of these reasons. Would it be clearer if I rename this class/file/method/variable?")
+- **Extract Some Changes and Refactoring into Future Tickets/Stories.**
+- **Link to the Code Review from the Ticket/Story**: ("Ready for review: https://github.com/organization/project/pull/1")
+- **Link to the Task/Issue from the PRs**: ("### Closes Task/Issue: https://link_to_task_or_issue")
+- **Push Commits Based on Earlier Rounds of Feedback as Isolated Commits to the Branch**: Do not squash until the branch is ready to merge. Reviewers should be able to read individual updates based on their earlier feedback.
+- **Seek to Understand the Reviewer's Perspective.**
+- **Try to Respond to Every Comment.**
+- **Wait to Merge the Branch until Continuous Integration (TDDium, Travis CI, CircleCI, etc.) Indicates the Test Suite is Green in the Branch.**
+- **Merge Once You Feel Confident in the Code and Its Impact on the Project.**
+- **Final Editorial Control Resides with the Pull Request Author.**
 
 [challenging to convey emotion and intention online]: https://thoughtbot.com/blog/empathy-online
 
-## Reviewing Code
+### Reviewing Code
 
-Understand why the change is necessary (fixes a bug, improves the user
-experience, refactors the existing code). Then:
+Understand why the change is necessary (fixes a bug, improves the user experience, refactors existing code). Then:
 
-- Communicate which ideas you feel strongly about and those you don't.
-- Identify ways to simplify the code while still solving the problem.
-- If discussions turn too philosophical or academic, move the discussion offline
-  to a regular Friday afternoon technique discussion. In the meantime, let the
-  author make the final decision on alternative implementations.
-- Offer alternative implementations, but assume the author already considered
-  them. ("What do you think about using a custom validator here?")
-- Seek to understand the author's perspective.
-- Sign off on the pull request with a 👍 or "Ready to merge" comment.
-- Remember that you are here to provide feedback, not to be a gatekeeper.
+- **Communicate Which Ideas You Feel Strongly About and Which You Don't.**
+- **Identify Ways to Simplify the Code While Still Solving the Problem.**
+- **If Discussions Become Too Philosophical or Academic, Move the Discussion Offline** (e.g., regular technical discussions). Meanwhile, allow the author to make the final decision on alternative implementations.
+- **Offer Alternative Implementations**, but assume the author has already considered them. ("What do you think about using a custom validator here?")
+- **Seek to Understand the Author's Perspective.**
+- **Sign Off on the Pull Request with a 👍 or "Ready to Merge" Comment.**
+- **Remember That You Are Here to Provide Feedback, Not to Be a Gatekeeper.**
+
 
 ## Style Comments
 
@@ -72,13 +221,7 @@ An example response to style comments:
 
     Whoops. Good catch, thanks. Fixed in a4994ec.
 
-If you disagree with a guideline, open an issue on the guides repo rather than
-debating it within the code review. In the meantime, apply the guideline.
-It's often helpful to set up a linter like [standard] to format code automatically.
-This helps us have more meaningful conversations on PRs rather than debating
-personal style preferences.
 
-[standard]: https://github.com/testdouble/standard
 
 ## Code Quality
 
@@ -292,8 +435,8 @@ def get_active_users(min_age, status=None):  # Missing type hints
 
 ✅ DO:
 ```typescript
-// Interfaces (PascalCase with I prefix)
-interface IUserProfile {
+// Interfaces (PascalCase without I prefix)
+interface UserProfile {
     readonly id: string;
     firstName: string;
     lastName: string;
@@ -333,7 +476,7 @@ const CalculateTotalPrice = () => {}  // Functions should use camelCase
 ✅ DO:
 ```typescript
 // Define interfaces for dependencies
-interface IUserRepository {
+interface UserRepository {
     findById(id: string): Promise<User>;
     save(user: User): Promise<void>;
 }
@@ -380,13 +523,13 @@ class UserService {
 
 ✅ DO:
 ```typescript
-interface IApiResponse<T> {
+interface ApiResponse<T> {
     data: T | null;
     error?: string;
     status: number;
 }
 
-async function fetchUserData(userId: string): Promise<IApiResponse<User>> {
+async function fetchUserData(userId: string): Promise<ApiResponse<User>> {
     try {
         const response = await api.get(`/users/${userId}`);
         return {
@@ -496,7 +639,7 @@ function processOrder(order: Order) {
 - Mock external dependencies appropriately
 - Keep tests independent and isolated
 - Write integration tests for critical paths
-- Use appropriate testing frameworks (pytest for Python, Jest for TypeScript)
+- Use appropriate testing frameworks (pytest for Python, Jest for TypeScript, Pest for PHP)
 - Implement E2E tests for critical user journeys
 
 ## Documentation
@@ -516,14 +659,14 @@ function processOrder(order: Order) {
 
 - Follow OWASP security guidelines
 - Implement proper authentication and authorization
-- Sanitize all user inputs
+- Sanitize all user inputs (trim, escape, validate)
 - Use environment variables for sensitive data
 - Implement proper session management
 - Use HTTPS for all network communications
 - Regular security dependency updates
 - Implement rate limiting where appropriate
 - Use prepared statements for database queries
-- Implement proper CORS policies
+- Implement proper CORS policies: Do not use '*'
 
 ## Performance
 
@@ -576,3 +719,15 @@ function processOrder(order: Order) {
 - Use appropriate abstraction layers
 - Maintain proper folder structure
 - Regular code refactoring
+
+
+
+---
+
+## Tools and Integrations
+
+- **GitHub Actions**: Use workflows to automate tests, builds, and deployments.
+- **Linters and Formatters**: Integrate tools like ESLint, Prettier, etc., to ensure code quality.
+- **Continuous Integration**: Set up CI/CD pipelines to automate the integration and delivery process.
+- **Code Review Tools**: Use tools that facilitate reviews, such as SonarQube, CodeClimate, etc.
+- **Communication**: Use platforms like Slack for efficient team communication.
