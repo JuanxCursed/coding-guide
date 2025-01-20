@@ -112,31 +112,45 @@ Upon completing development on a branch, create a Pull Request (PR) to integrate
 **Steps**:
 1. Access the repository on GitHub.
 2. Click on "New Pull Request".
-3. Select the source branch (e.g., `DRPT-18`) and the target branch (`development`).
+3. Select the source branch (e.g., `ABCD-18`) and the target branch (`development`).
 4. Fill in the PR title and description, including:
    - **Title**: `[TICKET_ID]: Clear summary of the change.`
    - **Description**: Details about what was done, why it was done, and any relevant additional information.
    - **Tasks**: List the tasks completed in this PR.
    - **Screenshots**: Include screenshots of any relevant changes, mainly for visual confirmation and UI changes.
    - **References**: Links to related issues or tickets.
+5. Go back to the Ticket/Issue, and fill out this information:
+   - **(WWW)**: What was done, why was it done, and which problem was solved?
+   - **Steps to test**: Basic steps description to execute a manual test
+   - **Validation criteria**: List cleary what must be validated
+6. Move to `Code review` stage, and send the Ticket/Issue link on the communication tool on the respective channel of the project
 
 **Example Description**:
 ```
 ### Description
 Adds Google authentication functionality, allowing users to log in using their Google accounts.
 
-### Tasks
-- Implement OAuth2 with Google's API.
-- Add unit tests.
-- Update documentation.
+### WWW: What was done, why was it done, and which problem was solved?
+
+### Steps to test
+- Access [link] and make login
+- click on topbar menu item: a > b > c
+- fill out the form with minimum information required
+- try to submit
+
+### Validation criteria
+- It must validate the form fields properly by required or data format
+- Must not enable the button if the required fields are not filled
+- Must submits if filled
+- If submitted, must redirect to the list and the record must be present
 
 ### Screenshots
 
 ![Screenshot 1](https://example.com/screenshot1.png)
 ![Screenshot 2](https://example.com/screenshot2.png)
 
-### Closes Task/Issue
-Closes [DRPT-18](task_link)
+### Resolves/Closes Task/Issue
+Closes [ABCD-18](task_link)
 ```
 
 
