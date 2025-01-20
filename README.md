@@ -145,7 +145,9 @@ Closes [ABCD-18](task_link)
 ```
 // On the ticket:
 
-### WWW: What was done, why was it done, and which problem was solved?
+### What was done, why was it done, and which problem was solved?
+- Fixed red error when trying to access Transfer Points bottom sheet;
+- Fixed api comunication error while trying to transfer points.
 
 ### Steps to test
 - Access [link] and make login
