@@ -122,13 +122,28 @@ Upon completing development on a branch, create a Pull Request (PR) to integrate
 5. Go back to the Ticket/Issue, and fill out this information:
    - **(WWW)**: What was done, why was it done, and which problem was solved?
    - **Steps to test**: Basic steps description to execute a manual test
-   - **Validation criteria**: List cleary what must be validated
+   - **Validation criteria**: List clearly what must be validated
 6. Move to `Code review` stage, and send the Ticket/Issue link on the communication tool on the respective channel of the project
 
 **Example Description**:
 ```
+// On the pull request:
+
 ### Description
 Adds Google authentication functionality, allowing users to log in using their Google accounts.
+
+### Screenshots
+
+![Screenshot 1](https://example.com/screenshot1.png)
+![Screenshot 2](https://example.com/screenshot2.png)
+
+### Resolves/Closes Task/Issue
+Closes [ABCD-18](task_link)
+```
+
+
+```
+// On the ticket:
 
 ### WWW: What was done, why was it done, and which problem was solved?
 
@@ -143,15 +158,8 @@ Adds Google authentication functionality, allowing users to log in using their G
 - Must not enable the button if the required fields are not filled
 - Must submits if filled
 - If submitted, must redirect to the list and the record must be present
-
-### Screenshots
-
-![Screenshot 1](https://example.com/screenshot1.png)
-![Screenshot 2](https://example.com/screenshot2.png)
-
-### Resolves/Closes Task/Issue
-Closes [ABCD-18](task_link)
 ```
+
 
 
 ### Reviewing Pull Requests
