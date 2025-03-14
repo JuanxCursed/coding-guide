@@ -33,6 +33,7 @@ Each file contains specific best practices for a technology:
 - [**Unity**](11-unity.md) - Best practices guide for Unity game development
 - [**Unreal Engine**](12-unreal.md) - Best practices guide for Unreal Engine development
 - [**Godot**](13-godot.md) - Best practices guide for Godot Engine and GDScript
+- [**Supabase**](14-supabase.md) - Best practices guide for Supabase usage with Nuxt and Typescript
 
 ## Code Standards
 
