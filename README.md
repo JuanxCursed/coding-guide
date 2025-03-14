@@ -43,17 +43,17 @@ The following code standards are applicable to all projects:
 1. **Function Design**
    - Functions should do only one thing and do it well
    - Keep functions small (ideally less than 20 lines)
-   - Functions should have a single level of abstraction
+- Functions should have a single level of abstraction
 
 2. **Variable Naming**
    - Use names that reveal intent
-   - Use pronounceable names
-   - Use searchable names
-   - Avoid encodings
+- Use pronounceable names
+- Use searchable names
+- Avoid encodings
 
 3. **Class Design**
    - Follow the Single Responsibility Principle
-   - Encapsulate related data and behavior
+- Encapsulate related data and behavior
    - Maintain high cohesion
 
 4. **Conditional Logic**
