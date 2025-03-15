@@ -4,15 +4,25 @@ This repository contains guides of best practices for software development, cove
 
 ## Table of Contents
 
-1. [Git Processes](#git-processes)
-2. [Technology Guides](#technology-guides)
-3. [Code Standards](#code-standards)
+1. [Project Management](#project-management)
+2. [Git Processes](#git-processes)
+3. [Technology Guides](#technology-guides)
+4. [Code Standards](#code-standards)
+5. [Quality Assurance](#quality-assurance)
+6. [Infrastructure & Security](#infrastructure--security)
 
 ---
 
+## Project Management
+
+These guides detail the processes and standards for project and task management:
+
+- [**Task Management (SOP)**](16-task-management.md) - Complete guide for task workflow, including story points, stages, and responsibilities
+- [**ESLint & Prettier Configuration**](15-eslint-prettier.md) - Code style and quality enforcement setup
+
 ## Git Processes
 
-These guides detail the processes that the team should follow when using Git, ensuring consistency, quality, and efficiency in software development.
+These guides detail the processes that the team should follow when using Git, ensuring consistency, quality, and efficiency in software development:
 
 - [**Branches**](04-branches.md) - Structure, naming, and workflow with branches
 - [**Commits**](05-commits.md) - Standards for commit messages and best practices
@@ -23,17 +33,22 @@ These guides detail the processes that the team should follow when using Git, en
 
 Each file contains specific best practices for a technology:
 
+### Web Development
 - [**JavaScript**](00-javascript.md) - Best practices guide for JavaScript
 - [**TypeScript**](01-typescript.md) - Best practices guide for TypeScript
 - [**Vue.js**](02-vue.md) - Best practices guide for Vue.js
 - [**Nuxt.js**](03-nuxt.md) - Best practices guide for Nuxt.js
+
+### Backend & Database
 - [**Python**](08-python.md) - Best practices guide for Python
 - [**.NET**](09-dotnet.md) - Best practices guide for .NET development
+- [**Supabase**](14-supabase.md) - Best practices guide for Supabase usage with Nuxt and TypeScript
+
+### Game Development
 - [**C++**](10-cpp.md) - Best practices guide for C++ development
 - [**Unity**](11-unity.md) - Best practices guide for Unity game development
 - [**Unreal Engine**](12-unreal.md) - Best practices guide for Unreal Engine development
 - [**Godot**](13-godot.md) - Best practices guide for Godot Engine and GDScript
-- [**Supabase**](14-supabase.md) - Best practices guide for Supabase usage with Nuxt and Typescript
 
 ## Code Standards
 
@@ -44,17 +59,17 @@ The following code standards are applicable to all projects:
 1. **Function Design**
    - Functions should do only one thing and do it well
    - Keep functions small (ideally less than 20 lines)
-- Functions should have a single level of abstraction
+   - Functions should have a single level of abstraction
 
 2. **Variable Naming**
    - Use names that reveal intent
-- Use pronounceable names
-- Use searchable names
-- Avoid encodings
+   - Use pronounceable names
+   - Use searchable names
+   - Avoid encodings
 
 3. **Class Design**
    - Follow the Single Responsibility Principle
-- Encapsulate related data and behavior
+   - Encapsulate related data and behavior
    - Maintain high cohesion
 
 4. **Conditional Logic**
@@ -72,7 +87,9 @@ The following code standards are applicable to all projects:
 3. **Deep Nesting**
 4. **Complex Inline Conditions**
 
-## Testing
+## Quality Assurance
+
+### Testing
 
 - Write unit tests for all new code
 - Maintain test coverage above 80%
@@ -85,7 +102,7 @@ The following code standards are applicable to all projects:
 - Use appropriate testing frameworks (pytest for Python, Jest for TypeScript, Pest for PHP)
 - Implement E2E tests for critical user journeys
 
-## Documentation
+### Documentation
 
 - Keep README files updated
 - Document setup and installation procedures
@@ -98,7 +115,9 @@ The following code standards are applicable to all projects:
 - Maintain a CHANGELOG
 - Include troubleshooting guides for common issues
 
-## Security
+## Infrastructure & Security
+
+### Security Best Practices
 
 - Follow OWASP security guidelines
 - Implement proper authentication and authorization
@@ -111,7 +130,7 @@ The following code standards are applicable to all projects:
 - Use prepared statements for database queries
 - Implement proper CORS policies: Don't use '*'
 
-## Performance
+### Performance
 
 - Optimize database queries
 - Implement caching strategies
@@ -124,7 +143,7 @@ The following code standards are applicable to all projects:
 - Profile code for bottlenecks
 - Consider scalability in design decisions
 
-## Accessibility
+### Accessibility
 
 - Follow WCAG 2.1 guidelines
 - Use semantic HTML elements
@@ -137,7 +156,7 @@ The following code standards are applicable to all projects:
 - Support text resizing
 - Provide focus indicators
 
-## Reliability
+### Reliability
 
 - Implement proper error handling
 - Add logging and monitoring
@@ -150,7 +169,7 @@ The following code standards are applicable to all projects:
 - Implement proper validation
 - Use feature flags for risky changes
 
-## Maintainability
+### Maintainability
 
 - Follow SOLID principles
 - Keep code modular and loosely coupled
