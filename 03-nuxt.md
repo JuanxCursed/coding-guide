@@ -257,19 +257,13 @@ Circular references occur when two modules depend on each other, which can cause
 **Problem:**
 
 ```typescript
-// Store imports composable
 // stores/product.ts
-import { useProductUtils } from '~/composables/useProductUtils';
-
 export const useProductStore = defineStore('product', () => {
   const productUtils = useProductUtils(); // Dependence on the composable
   // ...
 });
 
-// Composable imports store
 // composables/useProductUtils.ts
-import { useProductStore } from '~/stores/product';
-
 export const useProductUtils = () => {
   const productStore = useProductStore(); // Circular dependence!
   // ...
